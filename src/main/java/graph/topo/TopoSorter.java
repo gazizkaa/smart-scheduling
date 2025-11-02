@@ -2,7 +2,6 @@ package graph.topo;
 
 import java.util.*;
 
-
 public class TopoSorter {
     private final int n;
     private final List<List<Integer>> adj;
@@ -19,7 +18,6 @@ public class TopoSorter {
         adj.get(u).add(v);
     }
 
-
     public List<Integer> topologicalSort() {
         boolean[] visited = new boolean[n];
         boolean[] onStack = new boolean[n];
@@ -31,9 +29,8 @@ public class TopoSorter {
             }
         }
 
-        List<Integer> order = new ArrayList<>(stack);
-        Collections.reverse(order);
-        return order;
+
+        return new ArrayList<>(stack);
     }
 
     private void dfs(int v, boolean[] visited, boolean[] onStack, Deque<Integer> stack) {

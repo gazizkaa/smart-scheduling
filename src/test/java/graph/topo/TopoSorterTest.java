@@ -16,7 +16,7 @@ public class TopoSorterTest {
         sorter.addEdge(3, 4);
 
         List<Integer> order = sorter.topologicalSort();
-
+        System.out.println("Topological order: " + order);
         assertEquals(5, order.size());
         assertTrue(order.indexOf(0) < order.indexOf(1));
         assertTrue(order.indexOf(0) < order.indexOf(2));
