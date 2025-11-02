@@ -29,8 +29,12 @@ public class TopoSorter {
             }
         }
 
+        List<Integer> order = new ArrayList<>();
+        while (!stack.isEmpty()) {
+            order.add(stack.pop());
+        }
 
-        return new ArrayList<>(stack);
+        return order;
     }
 
     private void dfs(int v, boolean[] visited, boolean[] onStack, Deque<Integer> stack) {
