@@ -29,7 +29,6 @@ public class SCCFinder {
             }
         }
 
-
         List<List<Integer>> transposed = transpose();
 
         Arrays.fill(visited, false);
@@ -78,5 +77,33 @@ public class SCCFinder {
             }
         }
         return rev;
+    }
+
+
+    public List<List<Integer>> buildCondensation(List<List<Integer>> sccList) {
+
+        int[] nodeToSCC = new int[n];
+        for (int i = 0; i < sccList.size(); i++) {
+            for (int v : sccList.get(i)) {
+                nodeToSCC[v] = i;
+            }
+        }
+
+        List<Set<Integer>> dag = new ArrayList<>();
+        for (int i = 0; i < sccList.size(); i++) dag.add(new HashSet<>());
+
+        for (int u = 0; u < n; u++) {
+            for (int v : adj.get(u)) {
+                int sccU = nodeToSCC[u];
+                int sccV = nodeToSCC[v];
+                if (sccU != sccV) dag.get(sccU).add(sccV);
+            }
+        }
+
+
+        List<List<Integer>> condensation = new ArrayList<>();
+        for (Set<Integer> neighbors : dag) condensation.add(new ArrayList<>(neighbors));
+
+        return condensation;
     }
 }
