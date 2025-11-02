@@ -1,13 +1,16 @@
 package graph.dagsp;
 
 import org.junit.jupiter.api.Test;
+import java.util.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class DagLongestPathTest {
 
     @Test
-    void testSimpleDAG() {
+    void testLongestPathAndReconstruction() {
         DagLongestPath dag = new DagLongestPath(6);
+
+        // Graph edges with weights
         dag.addEdge(0, 1, 5);
         dag.addEdge(0, 2, 3);
         dag.addEdge(1, 3, 6);
@@ -22,9 +25,18 @@ public class DagLongestPathTest {
         int source = 1;
         int[] dist = dag.longestPath(source);
 
-        // Expected longest distances from node 1
-        int[] expected = {Integer.MIN_VALUE, 0, 2, 9, 8, 10};
 
-        assertArrayEquals(expected, dist);
+        assertEquals(Integer.MIN_VALUE, dist[0]);
+        assertEquals(0, dist[1]);
+        assertEquals(2, dist[2]);
+        assertEquals(9, dist[3]);   // updated expected value
+        assertEquals(8, dist[4]);   // updated expected value
+        assertEquals(10, dist[5]);  // updated expected value
+
+
+        List<Integer> path = dag.reconstructPath(5);
+
+
+        assertEquals(Arrays.asList(1, 2, 3, 5), path);
     }
 }
