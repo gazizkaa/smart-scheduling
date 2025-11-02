@@ -29,7 +29,7 @@ It covers:
 
 # Graph Algorithm Analysis Report
 
-## 📊 Data Summary
+##  Data Summary
 
 | Dataset | Nodes | Edges | Type | Weight Model |
 |---------|-------|-------|------|-------------|
@@ -45,7 +45,7 @@ It covers:
 
 All datasets feature weighted edges. Cyclic datasets are used for testing Strongly Connected Components (SCC) detection, while Directed Acyclic Graphs (DAGs) are utilized for topological sorting and shortest/longest path calculations.
 
-## 📈 Empirical Results
+##  Empirical Results
 
 | Dataset | SCCs | Topo Push/Pop | DAG-SP Relaxations | Time (ms) |
 |---------|------|---------------|-------------------|-----------|
@@ -65,7 +65,7 @@ All datasets feature weighted edges. Cyclic datasets are used for testing Strong
 - **DAG-SP Relaxations**: Number of edge relaxations in shortest/longest path computation
 - **Time**: Measured using `System.nanoTime()` (converted to milliseconds)
 
-## 🔍 Analysis and Empirical Validation
+##  Analysis and Empirical Validation
 
 ### 3.1 SCCFinder Analysis
 
