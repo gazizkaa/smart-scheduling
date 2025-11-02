@@ -1,0 +1,10 @@
+Dataset,Nodes,Edges,Type,Time(ms),Metric
+data/small_cycle1.json,6,8,Cyclic,0,4
+data/small_cycle2.json,7,6,DAG,0,7
+data/small_dag.json,8,10,DAG,0,8
+data/medium_mixed1.json,12,15,DAG,0,12
+data/medium_mixed2.json,15,20,Cyclic,0,11
+data/medium_dag.json,18,25,Cyclic,0,13
+data/large_dag1.json,25,40,Cyclic,1,15
+data/large_dag2.json,35,60,Cyclic,0,16
+data/large_dag3.json,45,80,Cyclic,0,27
