@@ -3,29 +3,57 @@ package graph;
 import java.util.*;
 
 public class Graph {
-    private final int vertices;
-    private final Map<Integer, List<Integer>> adjList = new HashMap<>();
 
-    public Graph(int vertices) {
-        this.vertices = vertices;
-        for (int i = 0; i < vertices; i++) {
-            adjList.put(i, new ArrayList<>());
+    public static class Edge {
+        public int to, weight;
+
+        public Edge(int to, int weight) {
+            this.to = to;
+            this.weight = weight;
         }
     }
 
-    public void addEdge(int from, int to) {
-        adjList.get(from).add(to);
+    private final int n; // number of nodes
+    private final boolean directed;
+    private final List<List<Edge>> adj;
+
+    public Graph(int n, boolean directed) {
+        this.n = n;
+        this.directed = directed;
+        adj = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            adj.add(new ArrayList<>());
+        }
     }
 
-    public List<Integer> getNeighbors(int v) {
-        return adjList.getOrDefault(v, Collections.emptyList());
+
+    public void addEdge(int u, int v, int weight) {
+        adj.get(u).add(new Edge(v, weight));
+        if (!directed) {
+            adj.get(v).add(new Edge(u, weight));
+        }
     }
 
-    public int getVertexCount() {
-        return vertices;
+    public List<Edge> getNeighbors(int u) {
+        return Collections.unmodifiableList(adj.get(u));
     }
 
-    public Map<Integer, List<Integer>> getAdjList() {
-        return adjList;
+    public int size() {
+        return n;
+    }
+
+    public boolean isDirected() {
+        return directed;
+    }
+
+
+    public void printGraph() {
+        for (int i = 0; i < n; i++) {
+            System.out.print(i + " -> ");
+            for (Edge e : adj.get(i)) {
+                System.out.print("(" + e.to + ", " + e.weight + ") ");
+            }
+            System.out.println();
+        }
     }
 }
